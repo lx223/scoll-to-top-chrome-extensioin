@@ -1,14 +1,14 @@
 {
   "name": "scroll-to-top",
   "version": "0.0.0",
-  "description": "A Chrome extension that scrolls the page to its top",
+  "description": "A Chrome extension that scrolls a page to its top",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/lx223/tabs-synced.git"
+    "url": "https://github.com/lx223/scoll-to-top-chrome-extensioin.git"
   },
   "keywords": [
     "chrome",
@@ -20,7 +20,7 @@
   "author": "lx223",
   "license": "GPLv2",
   "bugs": {
-    "url": "https://github.com/lx223/tabs-synced/issues"
+    "url": "https://github.com/lx223/scoll-to-top-chrome-extensioin/issues"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
