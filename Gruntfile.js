@@ -8,8 +8,10 @@ module.exports = function(grunt) {
                 src: [
                     "src/**/*"
                 ],
-                dest: "build/crx/<%= pkg.name %>-<%= manifest.version %>-dev.crx",
-                zipDest: "build/zip/<%= pkg.name %>-<%= manifest.version %>-dev.zip",
+                // dest: "build/crx/<%= pkg.name %>-<%= manifest.version %>-dev.crx",
+                // zipDest: "build/zip/<%= pkg.name %>-<%= manifest.version %>-dev.zip",
+                dest: "build/crx/<%= pkg.name %>.crx",
+                zipDest: "build/zip/<%= pkg.name %>.zip",
                 options: {
                     "privateKey": "key.pem"
                 }
