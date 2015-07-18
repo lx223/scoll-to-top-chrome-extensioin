@@ -26,5 +26,7 @@
     "16": "img/icon16.png",
     "48": "img/icon48.png",
     "128": "img/icon128.png"
-  }
+  },
+
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAveN1gFq4BqWIG7yLKHPHbGXGEmuARPIo2seO5kegP5g50bWGOrokot+ft85KkU7qbSd6sUI+etIVH1+kPIVaou52EWPQwHpJkB53SY6Xtbynh+reFrULni3N6zH5vstWOOV82RMJNpoPp0NEyxDFODRdZHQw+fNTYmP+NFEhWHxNo9F/vEhFRmGfxdcEl/FT4Eypbt8TFcPoOplIDbPODiSMKGCaI0jJoT5cmfsyGT2Ik7vTPjVxIbwcJemXFLgb8G/UkEgDwxQyB0o2hXvgHR9Fz3NE2ieNM7kjBg+H7cRx2QGWbQADe14si11rVJaSxM/GhO8QZkvKfjKNJapuTQIDAQAB"
 }
