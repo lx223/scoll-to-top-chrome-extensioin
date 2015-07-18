@@ -1,7 +1,7 @@
 # Chrome Extension - Scroll to Top
 a Chrome extension that scrolls a page to its top
 
-If you have any suggestions or find any problems using the extension, please [submit a bug or a feature request](#).
+If you have any suggestions or find any problems using the extension, please [submit a bug or a feature request](https://github.com/lx223/scoll-to-top-chrome-extensioin/issues).
 
 ### Installation
 
