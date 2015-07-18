@@ -5,7 +5,7 @@ If you have any suggestions or find any problems using the extension, please [su
 
 ### Installation
 
-1. **[Download ZIP](#)** and unarchive to wherever you prefer
+1. **[Download ZIP](https://github.com/lx223/scoll-to-top-chrome-extensioin/tree/master/build/zip)** and unarchive to wherever you prefer
 2. Using **Google Chrome** browser, navigate to **chrome://extensions/** and enable "Developer mode" in the top right corner
 3. Click on the <kbd>Load unpacked extension...</kbd> button, browse to the unarchived directory of the downloaded release and confirm
 
