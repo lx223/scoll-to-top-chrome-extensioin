@@ -20,7 +20,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://*/*","https://*/*"],
+      "matches": ["http://*/*", "https://*/*"],
       "js": ["contentScript.js"]
     }
   ],
@@ -28,7 +28,6 @@
   "permissions": [
     "activeTab",
     "tabs",
-    "webNavigation",
     "<all_urls>"
    ],
 
