@@ -1,9 +1,24 @@
-(function(){
+(function(window){
   'use strict';
 
-  var L = "log",
-      DURATION = "750",
-      EASING = "swing";
+  var didScroll = false,
+      INTERVAL = 200,
+      THRESHOLD = 100;
 
-  $("html, body").stop().animate({scrollTop:0}, DURATION, EASING);
-})();
+  function checkIfTop() {
+      didScroll = true;
+  }
+
+  setInterval(function() {
+      if(didScroll) {
+          didScroll = false;
+          if (window.scrollY > THRESHOLD) {
+            chrome.runtime.sendMessage(null, "activate");
+          } else {
+            chrome.runtime.sendMessage(null, "deactivate");
+          }
+      }
+  }, INTERVAL);
+
+  window.onscroll = checkIfTop;
+})(window);
