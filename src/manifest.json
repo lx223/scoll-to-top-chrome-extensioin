@@ -27,7 +27,9 @@
 
   "permissions": [
     "activeTab",
-    "webNavigation"
+    "tabs",
+    "webNavigation",
+    "<all_urls>"
    ],
 
   "icons": {

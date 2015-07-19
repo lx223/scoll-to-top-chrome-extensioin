@@ -31,14 +31,20 @@
     }
   });
 
-  chrome.runtime.onStartup.addListener(function() {
-    console.log('Starting browser...');
-    chrome.browserAction.disable();
-  });
-
   chrome.runtime.onInstalled.addListener(function(details) {
     console.log('Installed extension...');
-    chrome.browserAction.disable();
+    deactivate(); // Default to inactive state
+
+    // Re-inject scripts to cope with extension updates
+    chrome.windows.getAll({populate:true},function(windows){
+      windows.forEach(function(window){
+        window.tabs.forEach(function(tab){
+          chrome.tabs.executeScript(tab.id, {file: "contentScript.js"}, function(){
+            if(chrome.runtime.lastError) return; // Handle the permission errors
+          });
+        });
+      });
+    });
   });
 
   chrome.browserAction.onClicked.addListener(function(tab) {
