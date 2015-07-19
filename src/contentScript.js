@@ -1,9 +1,7 @@
 (function(window){
   'use strict';
 
-  var didScroll = false,
-      INTERVAL = 200,
-      THRESHOLD = 100;
+  var didScroll = false;
 
   if (window.scrollY > THRESHOLD) {
     chrome.runtime.sendMessage(null, "activate");
