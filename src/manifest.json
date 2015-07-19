@@ -2,7 +2,7 @@
   "name": "Scroll to top",
   "description": "press and scroll to top",
   "version": "0.0.1",
-  "minimum_chrome_version": "24",
+  "minimum_chrome_version": "26",
 
   "manifest_version": 2,
 
@@ -14,12 +14,20 @@
   },
 
   "browser_action": {
-    "default_icon": "img/icon38_active.png",
+    "default_icon": "img/icon38_inactive.png",
     "default_title": "Scroll to top"
   },
 
+  "content_scripts": [
+    {
+      "matches": ["http://*/*","https://*/*"],
+      "js": ["jquery.min.js"]
+    }
+  ],
+
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "webNavigation"
    ],
 
   "icons": {

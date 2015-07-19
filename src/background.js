@@ -1,6 +1,22 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
-  // No tabs or host permissions needed!
-  chrome.tabs.executeScript(null, {file: "contentScript.js"}, function(){
-    console.log("content script executed...");
+(function(){
+  'use strict';
+
+  chrome.webNavigation.onCompleted.addListener(function(details){
+    console.log("on completed event fired...");
+    chrome.browserAction.setIcon({
+                                  "path" : "img/icon38_active.png",
+                                  "tabId" : details.tabId
+                                });
+    chrome.browserAction.enable(details.tabId);
   });
-});
+
+  chrome.browserAction.onClicked.addListener(function(tab) {
+    chrome.tabs.executeScript(null, {file: "jquery.min.js"}, function(lastError){
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError.message);
+      } else {
+        chrome.tabs.executeScript(null, {file: "contentScript.js"});
+      }
+    });
+  });
+})();
