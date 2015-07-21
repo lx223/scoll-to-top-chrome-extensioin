@@ -1,6 +1,6 @@
 {
-  "name": "Scroll to Top - one press to the top",
-  "short_name": "Scroll to Top",
+  "name": "Scroll to top - one press to the top",
+  "short_name": "Scroll to top",
   "description": "an easy way to take a page back to its top",
   "version": "0.2.1",
   "minimum_chrome_version": "26",
@@ -15,7 +15,8 @@
   },
 
   "browser_action": {
-    "default_icon": "img/icon38_inactive.png"
+    "default_icon": "img/icon38_inactive.png",
+    "default_title": "Scroll to top"
   },
 
   "content_scripts": [
