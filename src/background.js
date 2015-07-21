@@ -8,6 +8,7 @@
                                   "tabId" : tabId
                                 });
     chrome.browserAction.enable(tabId);
+    chrome.browserAction.setTitle("Scroll to top");
   }
 
   function deactivate(tabId) {
@@ -17,6 +18,7 @@
                                   "tabId" : tabId
                                 });
     chrome.browserAction.disable(tabId);
+    chrome.browserAction.setTitle("Not applicable to this page");
   }
 
   chrome.runtime.onMessage.addListener(function(message, sender){
