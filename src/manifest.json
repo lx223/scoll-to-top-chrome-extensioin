@@ -2,7 +2,7 @@
   "name": "Scroll to Top - one press to the top",
   "short_name": "Scroll to Top",
   "description": "An easy way to take a page back to its top",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "minimum_chrome_version": "26",
 
   "manifest_version": 2,
