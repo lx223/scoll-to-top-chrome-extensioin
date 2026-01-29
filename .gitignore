@@ -3,5 +3,7 @@
 /resources
 /dist
 
+.DS_Store
+
 .cursor/
 .claude/

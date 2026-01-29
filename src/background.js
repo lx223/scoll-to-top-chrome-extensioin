@@ -1,30 +1,27 @@
-// Google analytics snippets
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-68403903-1', 'auto');
-
 function activate(tabId) {
   console.log("activating...");
-  chrome.browserAction.setIcon({
-                                "path" : "img/icon38_active.png",
-                                "tabId" : tabId
-                              });
-  chrome.browserAction.enable(tabId);
+  chrome.action.setIcon({
+    path: "img/icon38_active.png",
+    tabId: tabId,
+  });
+  chrome.action.enable(tabId);
 }
 
 function deactivate(tabId) {
   console.log("deactivating...");
-  chrome.browserAction.setIcon({
-                                "path" : "img/icon38_inactive.png",
-                                "tabId" : tabId
-                              });
-  chrome.browserAction.disable(tabId);
+  if (tabId != null) {
+    chrome.action.setIcon({
+      path: "img/icon38_inactive.png",
+      tabId: tabId,
+    });
+    chrome.action.disable(tabId);
+  } else {
+    chrome.action.setIcon({ path: "img/icon38_inactive.png" });
+    chrome.action.disable();
+  }
 }
 
-chrome.runtime.onMessage.addListener(function(message, sender){
+chrome.runtime.onMessage.addListener(function (message, sender) {
   switch (message) {
     case "activate":
       activate(sender.tab.id);
@@ -36,37 +33,35 @@ chrome.runtime.onMessage.addListener(function(message, sender){
   }
 });
 
-chrome.runtime.onInstalled.addListener(function(details) {
-  console.log('Installed extension...');
-  deactivate(); // Default to inactive state
+chrome.runtime.onInstalled.addListener(function (details) {
+  console.log("Installed extension...");
+  deactivate(null);
 
   // Re-inject scripts to cope with extension updates
-  chrome.windows.getAll({populate:true},function(windows){
-    windows.forEach(function(window){
-      window.tabs.forEach(function(tab){
-        chrome.tabs.executeScript(tab.id, {file: "contentScript.js"}, function(){
-          if(chrome.runtime.lastError) return; // Ingore the permission errors
-        });
+  chrome.windows.getAll({ populate: true }, function (windows) {
+    windows.forEach(function (window) {
+      window.tabs.forEach(function (tab) {
+        chrome.scripting
+          .executeScript({
+            target: { tabId: tab.id },
+            files: ["contentScript.js"],
+          })
+          .catch(function () {
+            // Ignore permission errors (e.g. chrome:// pages)
+          });
       });
     });
   });
 });
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-  // Track browser action count via Google analytics
-  ga('send', 'event', 'BrowserAction', 'execute', {
-    hitCallback: function() {
-      console.log('Event hit recorded...');
-    }
-  });
-
-  chrome.tabs.executeScript(null, {file: "jquery.min.js"}, function(){
-    if (chrome.runtime.lastError) {
-      console.error(chrome.runtime.lastError.message);
-    } else {
-      chrome.tabs.executeScript(null, {file: "actionScript.js"}, function(){
-        if(chrome.runtime.lastError) console.error(chrome.runtime.lastError.message);
-      });
-    }
-  });
+chrome.action.onClicked.addListener(function (tab) {
+  chrome.scripting
+    .executeScript({
+      target: { tabId: tab.id },
+      files: ["jquery.min.js", "actionScript.js"],
+    })
+    .then(function () { })
+    .catch(function (err) {
+      console.error(err.message);
+    });
 });
