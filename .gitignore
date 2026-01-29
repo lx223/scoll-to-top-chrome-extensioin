@@ -2,6 +2,7 @@
 /node_modules
 /resources
 /dist
+/build
 
 .DS_Store
 

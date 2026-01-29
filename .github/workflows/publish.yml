@@ -1,0 +1,46 @@
+name: publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to build and release"
+        required: false
+        default: "main"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch || 'main' }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Get extension version
+        id: version
+        run: echo "version=$(jq -r .version src/manifest.json)" >> $GITHUB_OUTPUT
+
+      - name: Create versioned zip from dist
+        run: |
+          cd dist && zip -r "../scroll-to-top-v${{ steps.version.outputs.version }}.zip" . && cd ..
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          files: scroll-to-top-v${{ steps.version.outputs.version }}.zip
+          generate_release_notes: true
+          replace_existing: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
