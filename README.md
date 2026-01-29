@@ -5,13 +5,15 @@ If you have any suggestions or find any problems using the extension, please [su
 
 ### Installation
 
-1. **[Download ZIP](https://github.com/lx223/scoll-to-top-chrome-extensioin/tree/master/build/zip)** and unarchive to wherever you prefer
-2. Using **Google Chrome** browser, navigate to **chrome://extensions/** and enable "Developer mode" in the top right corner
-3. Click on the <kbd>Load unpacked extension...</kbd> button, browse to the unarchived directory of the downloaded release and confirm
+**Option A — Chrome Web Store (recommended)**
 
-Or
+Install from the **[Chrome Web Store](https://chrome.google.com/webstore/detail/scroll-to-top/hhoboiondmldfnjfegfahmbdodjpkhab)** for automatic updates.
 
-You can download from **[Chrome extention store](https://chrome.google.com/webstore/detail/scroll-to-top/hhoboiondmldfnjfegfahmbdodjpkhab)** and enjoy auto-updating with each new version.
+**Option B — Manual (unpacked)**
+
+1. **[Download the latest release](https://github.com/lx223/scoll-to-top-chrome-extensioin/releases)** (`scroll-to-top-v*.zip`) and unzip it.
+2. In **Chrome**, open **chrome://extensions/** and turn on **Developer mode** (top right).
+3. Click **Load unpacked**, choose the unzipped folder, and confirm.
 
 ### Development
 
@@ -22,7 +24,7 @@ npm install
 npm run build
 ```
 
-This produces `dist/` (load as unpacked extension from there), and `build/zip/scroll-to-top.zip`. To also create a signed `.crx`, add a `key.pem` in the project root and run `npm run build` again (requires [crx3](https://www.npmjs.com/package/crx3), Node 22+ for .crx).
+This produces `dist/` (load as unpacked extension from there).
 
 ### License
 
