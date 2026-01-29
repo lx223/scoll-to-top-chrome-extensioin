@@ -13,6 +13,17 @@ Or
 
 You can download from **[Chrome extention store](https://chrome.google.com/webstore/detail/scroll-to-top/hhoboiondmldfnjfegfahmbdodjpkhab)** and enjoy auto-updating with each new version.
 
+### Development
+
+Build with [Vite](https://vitejs.dev/):
+
+```bash
+npm install
+npm run build
+```
+
+This produces `dist/` (load as unpacked extension from there), and `build/zip/scroll-to-top.zip`. To also create a signed `.crx`, add a `key.pem` in the project root and run `npm run build` again (requires [crx3](https://www.npmjs.com/package/crx3), Node 22+ for .crx).
+
 ### License
 
 This work is licensed under a GNU GENERAL PUBLIC LICENSE (v2)
